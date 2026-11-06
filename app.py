@@ -26,6 +26,8 @@ from apis import (
     analyze_pair, full_analysis, batch_analyze,
     calculate_trust_score, tokensniffer_url,
 )
+from pwa_setup import show_install_banner
+from premium import show_premium_sidebar, show_premium_wall
 
 # ─── Page config ─────────────────────────────────────────────
 st.set_page_config(
@@ -33,6 +35,9 @@ st.set_page_config(
     page_icon="👻",
     layout="wide",
     initial_sidebar_state="expanded",
+    menu_items={
+        "About": "# Meme Coin Radar 👻\nAI-powered meme coin safety scanner.\nFree + Premium tiers.",
+    },
 )
 
 # ─── Session state ────────────────────────────────────────────
@@ -69,6 +74,10 @@ def save_alerts():
 
 load_watchlist()
 load_alerts()
+
+# ─── PWA + Premium ────────────────────────────────────────────
+show_install_banner()
+show_premium_sidebar()
 
 # ─── Sidebar ─────────────────────────────────────────────────
 st.sidebar.title("👻 Meme Coin Radar")
@@ -783,5 +792,5 @@ elif tabs == "🔔 Alerts":
     3. If triggered, it sends you a notification.
     """)
 
-    if st.button("Set Up Auto-Monitor (Cron Job)"):
-        st.info("Use the Kiro Crew Schedule page or ask the AI to create a cron job.")
+# ─── Premium Wall (always at bottom) ─────────────────────────
+show_premium_wall()

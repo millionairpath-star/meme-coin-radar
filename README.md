@@ -2,23 +2,37 @@
 
 AI-powered meme coin safety scanner. Check any meme coin for scams, rugs, and profit potential.
 
+## Live Demo
+
+Deploy free on Streamlit Cloud:
+1. Fork this repo to your GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Select this repo, set main file path to `app.py`
+4. Get a public URL — works on phone, PC, tablet
+
+## Install as App (PWA)
+
+- **Android:** Open URL in Chrome → Menu → "Install app"
+- **iPhone:** Open URL in Safari → Share → "Add to Home Screen"
+- **PC:** Open URL in Chrome → Click install icon in address bar
+
+No Play Store needed. No APK build needed. Works offline too.
+
 ## Features
 
-| Tab | What it does |
-|-----|-------------|
-| Scanner | Search any coin, get trust score + full audit |
-| Hype Radar | Trending, boosted, and new tokens |
-| Deep Dive | Contract address full security audit |
-| Website Checker | Phishing + scam website detection |
-| Profit Estimator | Entry/exit/TSL/TP calculator with tax |
-| Watchlist | Track coins with live price refresh |
-| Alerts | Price and security alert setup |
-
-## Data Sources (all free, no API keys needed)
-
-- **DexScreener API** — live price, volume, liquidity, buy/sell ratio, market cap
-- **GoPlus Security API** — honeypot, mint, hidden owner, tax, holder count, rug pull flags
-- **TokenSniffer** — automated audit score (web link)
+| Tab | Free | Premium |
+|-----|------|---------|
+| Scanner | ✅ 8 coins/search | 🔒 Unlimited |
+| Hype Radar | ✅ | ✅ |
+| Deep Dive Audit | ✅ EVM chains | 🔒 + Solana |
+| Website Checker | ✅ | ✅ |
+| Profit Estimator | ✅ | ✅ |
+| Watchlist | ✅ 10 coins | 🔒 Unlimited |
+| Alerts | ✅ Local | 🔒 Telegram |
+| AI Pump Signals | 🔒 | ✅ |
+| Whale Tracker | 🔒 | ✅ |
+| Rug-Pull Predictor | 🔒 | ✅ |
+| Auto-Trade Bot | 🔒 | ✅ |
 
 ## Trust Score System (0-100)
 
@@ -30,7 +44,13 @@ AI-powered meme coin safety scanner. Check any meme coin for scams, rugs, and pr
 | 35-49 | D | High risk |
 | 0-34 | F | Danger |
 
-## Setup
+## Data Sources (all free, no API keys needed)
+
+- **DexScreener API** — live price, volume, liquidity, buy/sell ratio, market cap
+- **GoPlus Security API** — honeypot, mint, hidden owner, tax, holder count, rug pull flags
+- **TokenSniffer** — automated audit score (web link)
+
+## Setup (Local)
 
 ```bash
 cd meme-coin-tool
@@ -40,15 +60,32 @@ streamlit run app.py
 
 App opens at `http://localhost:8501`
 
-## How to Use
+## Setup (Streamlit Cloud — Free Hosting)
 
-1. **Scanner tab** — type coin name (e.g. PEPE), get ranked list by trust score
-2. **Deep Dive tab** — paste contract address + select chain for full audit
-3. **Hype Radar tab** — find trending and boosted coins
-4. **Website Checker tab** — paste coin website URL to check for phishing
-5. **Profit Estimator tab** — set entry price, TP, SL, tax to calculate P&L
-6. **Watchlist tab** — add coins from scanner, refresh prices anytime
-7. **Alerts tab** — set price/volume/liquidity alerts
+1. Create GitHub account: [github.com/signup](https://github.com/signup)
+2. Upload this folder to a new repo
+3. Go to [share.streamlit.io](https://share.streamlit.io)
+4. Sign in with GitHub
+5. Select your repo, set path to `app.py`
+6. Click Deploy — done!
+
+## File Structure
+
+```
+meme-coin-tool/
+├── app.py              # Main Streamlit app (7 tabs)
+├── apis.py             # DexScreener + GoPlus API layer
+├── premium.py          # Premium features wall
+├── pwa_setup.py        # PWA install banner
+├── cron_meme_radar.py  # Daily cron job for alerts
+├── requirements.txt    # Python dependencies
+├── .streamlit/
+│   └── config.toml     # Dark theme config
+├── static/
+│   ├── manifest.json   # PWA manifest
+│   └── sw.js           # Service worker (offline)
+└── README.md
+```
 
 ## Disclaimer
 
